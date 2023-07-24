@@ -1,0 +1,20 @@
+﻿@page
+@model RazorProject.Pages.Employeepage.UploadMultipleEmployeesModel
+@{
+}
+<div class="container">
+    <h3>Add Employees in bulk</h3>
+    <form method="post" enctype="multipart/form-data">
+        <div class="col-lg-7">
+            <a class="btn btn-outline-primary m-3" href="~/template.xlsx" download>Download Template</a>
+            <input class="m-3 btn btn-outline-primary" type="file" name="excelFile" accept=".xlsx, .xls" />
+            <button class="btn btn-outline-secondary m-3" type="submit">Upload</button>
+        </div>
+    </form>
+</div>
+
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <div>@Model.Message</div>
+}

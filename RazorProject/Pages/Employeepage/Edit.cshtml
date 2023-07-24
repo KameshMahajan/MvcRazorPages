@@ -1,0 +1,61 @@
+﻿@page "{Id:int}"
+@model RazorProject.Pages.Employeepage.EditModel
+@{
+    ViewData["Title"] = "Edit your Employee..";
+}
+<div>
+    <div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"><strong>Edit Employee</strong></h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    
+                    <div class="col-md-8 item_content">
+                        <form method="post">
+                           
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="panel">
+                                            <div class="panel-body">
+                                                <div class="col-md-12" style="margin-top:15px;">
+                                                    <input asp-for="employee.Id" type="hidden" />
+                                                    <label asp-for="employee.FirstName" style="font-weight:bold;"></label>
+                                                    <input type='text' class='form-control' asp-for="employee.FirstName" />
+                                                    <span class="alert-danger" asp-validation-for="employee.FirstName"></span>
+                                                </div>
+                                                <div class="col-md-12" style="margin-top:15px;">
+                                                    <label asp-for="employee.LastName" style="font-weight:bold;"></label>
+                                                    <input type='text' class='form-control' asp-for="employee.LastName" />
+                                                    <span class="alert-danger" asp-validation-for="employee.LastName"></span>
+                                                </div>
+                                                <div class="col-md-12" style="margin-top:15px;">
+                                                    <label asp-for="employee.Department" style="font-weight:bold;"></label>
+                                                    <input type='text' class='form-control' asp-for="employee.Department" />
+                                                    <span class="alert-danger" asp-validation-for="employee.Department"></span>
+                                                </div>
+                                                <div class="col-md-12" style="margin-top:15px;">
+                                                    <label asp-for="employee.Designation" style="font-weight:bold;"></label>
+                                                    <input type='text' class='form-control' asp-for="employee.Designation" />
+                                                    <span class="alert-danger" asp-validation-for="employee.Designation"></span>
+                                                </div>
+                                                <div class="text-center col-md-12" style="margin-top:35px;">
+                                                    <button class="btn btn-primary " type="submit">
+                                                        <i class="glyphicon glyphicon-edit"></i> Save Employee
+                                                    </button>
+                                                    <a class="btn btn-primary btn-sx" asp-page="/Index"><i class="glyphicon glyphicon-backward"></i> Employee List</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+﻿@page
+@model IndexModel
+@{
+      ViewData["Title"] = "Our Employees!";
+}
+
+<script>
+    function myFunction(x) {
+        $("#item_view").modal();
+    };
+    $(document).ready(function () {
+        $("#success-alert").hide();
+        $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+            $("#success-alert").slideUp(500);
+        });
+    });
+
+</script>
+<div class="container">
+    <div class="mail-box">
+        <aside class="lg-side">
+            <div class="inbox-head">
+                <h3>Razor Page CRUD Operation</h3>
+            </div>
+            <a class="btn btn-primary btn-sx pull-left" style="margin-top:20px;margin-bottom: 20px;" asp-page="/EmployeePage/Add">
+                <i class="glyphicon glyphicon-plus"></i> Add New Employee
+            </a>
+            <a class="btn btn-outline-primary" asp-page="/EmployeePage/UploadMultipleEmployees" >Upload Multiple Employee</a>
+
+            <br />
+           
+
+            <div class="inbox-body" style="margin-top:20px;">
+
+
+                <table class="table table-hover table-responsive-sm">
+                    <thead class="table-dark">
+                        <tr>
+                           
+                            <th scope="col">FIRST NAME</th>
+                            <th scope="col">LAST NAME</th>
+                            <th scope="col">DEPARTMENT</th>
+                            <th scope="col">DESIGNATION</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    <tbody>
+                            @foreach (var item in Model.EmployeeList)
+                            {
+                            <tr>
+                                    @*<td onclick="myFunction(this)" class="view-message"><h5>@item.Id</h5></td>*@
+                                <td onclick="myFunction(this)" class="view-message"><h5>@item.FirstName</h5></td>
+                                <td onclick="myFunction(this)" class="view-message"><h5>@item.LastName</h5></td>
+                                <td onclick="myFunction(this)" class="view-message"><h5>@item.Department</h5></td>
+                                <td onclick="myFunction(this)" class="view-message"><h5>@item.Designation</h5></td>
+
+                                <td>
+                                    <form method="post">
+                                         
+                                            <a class="btn btn-primary " asp-page="/EmployeePage/Edit" asp-route-id="@item.Id"
+                                               onclick="return confirm('Are you sure to edit '+ '@item.Id');"
+                                                >
+                                                Edit
+                                            </a>
+
+                                            <button type="submit" class="btn btn-danger  " asp-page-handler="Delete" asp-route-id="@item.Id"
+                                                    onclick="return confirm('Are you sure to delete this product?');">
+                                                Delete
+                                            </button>
+
+                                         
+                                    </form>
+                                </td>
+                            </tr>
+                            }
+                    </tbody>
+                </table>
+
+            </div>
+        </aside>
+    </div>
+</div>
